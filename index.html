@@ -16,7 +16,7 @@ var blank = ['-', '-', '-', '-', '-', '-'];
 
 var madona = ['m', 'a', 'd', 'o', 'n', 'a'];
 
-var changing = [];
+var changing = [blank];
 
 
 
@@ -25,9 +25,11 @@ document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 // is there a funtion to test key up in an array???
 
-	if ((userGuess === 'm') || (userGuess === 'a') || (userGuess === 'd') || (userGuess === 'o') || (userGuess === 'n') || (userGuess === 'a')) {
+	if (userGuess === madona.indexOf('m')) {
 
-		if (userGuess === 'm') {
+		/*((userGuess === 'm') || (userGuess === 'a') || (userGuess === 'd') || (userGuess === 'o') || (userGuess === 'n') || (userGuess === 'a')) {*/
+
+		/*if (userGuess === 'm') {*/
 
 			blank.splice(0, 1, "m");
 
@@ -76,7 +78,7 @@ document.onkeyup = function(event) {
 
 		} 
 		
-	} else {
+	else {
 		console.log("try again");
 	}
 

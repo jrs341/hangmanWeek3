@@ -12,7 +12,7 @@
 
 <script type="text/javascript" href="assets/javascript/game.js">
 
-/*var blank = ['-', '-', '-', '-', '-', '-'];*/
+var blank = ['-', '-', '-', '-', '-', '-'];
 
 var madona = ['m', 'a', 'd', 'o', 'n', 'a'];
 
@@ -43,7 +43,17 @@ document.onkeyup = function(event) {
 	}
 
 	if (include(madona, userGuess)) {
-		console.log('true');
+
+		/*Need to return the position of the object in the array*/
+		console.log(madona.indexOf(userGuess));
+
+		/*Need to replace the "blank" with userGuess*/
+
+		blank.splice(madona.indexOf(userGuess), 1, userGuess);
+
+		console.log(blank);
+
+		
 	} else {
 		console.log('false');
 	}

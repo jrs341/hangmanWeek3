@@ -12,32 +12,55 @@
 
 <script type="text/javascript" href="assets/javascript/game.js">
 
-var blank = ['-', '-', '-', '-', '-', '-'];
+/*var blank = ['-', '-', '-', '-', '-', '-'];*/
 
 var madona = ['m', 'a', 'd', 'o', 'n', 'a'];
 
-var changing = [blank];
+/*var changing = [blank];*/
 
 
 
 document.onkeyup = function(event) {
 
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-// is there a funtion to test key up in an array "array.prototype.contains"???
+// is there a funtion to test key up in an array "array.prototype.contains or includes"???
 
-	if (userGuess === madona.indexOf('m')) {
+	/*lost on this one /*Array.prototype.contains = function(userGuess) {
+		for (var i = 0; i < this.lenght; i++) {
+			if (this[i] == userGuess) {
+				console.log('t');
+			}
+		} 
+			console.log('f');
+		
+	};*/
+
+	function include(arr, obj) {
+		for(var i=0; i<arr.length; i++) {
+			if (arr[i] == obj)
+				return true;
+		}
+	}
+
+	if (include(madona, userGuess)) {
+		console.log('true');
+	} else {
+		console.log('false');
+	}
+
+		/*(userGuess == madona.contains('m')) {
 
 		/*((userGuess === 'm') || (userGuess === 'a') || (userGuess === 'd') || (userGuess === 'o') || (userGuess === 'n') || (userGuess === 'a')) {*/
 
 		/*if (userGuess === 'm') {*/
 
-			blank.splice(0, 1, "m");
+		/*blank.splice(0, 1, "m");
 
 		console.log(blank);// insert function to replace element in array)
 
-		} 
+		} */
 
-		else if (userGuess === 'a') {
+		/*else if (userGuess === 'a') {
 
 			 blank.splice(1, 1, 'a');
 			 blank.splice(5, 1, 'a');
@@ -80,7 +103,7 @@ document.onkeyup = function(event) {
 		
 	else {
 		console.log("try again");
-	}
+	}*/
 
 
 

@@ -12,11 +12,16 @@
 
 <script type="text/javascript" href="assets/javascript/game.js">
 
-var blank = ['-', '-', '-', '-', '-', '-'];
+var blank = ['-']; /*doesnt' work when spelled out of order, blank array must equal current array*/
 
-var madona = ['m', 'a', 'd', 'o', 'n', 'a'];
+var madona = ['m', 'a', 'd', 'o', 'n', 'a',];
 
-/*var changing = [blank];*/
+var hairbands = [];
+
+hairbands [0] = ['p','o','i','s','o','n'];
+hairbands [1] = ['v','a','n',' ','h','a','l','e','n'];
+
+var random = hairbands[Math.floor(Math.random() * hairbands.length)];
 
 
 
@@ -36,18 +41,31 @@ document.onkeyup = function(event) {
 	};*/
 	/* need to run the forEach function first and have include function inside forEach function*/
 
-	function include(arr, obj) {
-		for(var i=0; i<arr.length; i++) {
-			if (arr[i] == obj)
-				return true;
-			}
-		}
-
-		if (include(madona, userGuess)) {
-
-		/*madona.forEach(checkMultiples);*/
+	
 
 	
+
+		function include(arr, obj) 
+		{	
+			/*for(var i=0; i<arr.length; i++)*/
+			
+				if (arr.indexOf(obj) == -1) /*was -1 */
+			
+				{
+				console.log('try again');
+			
+				} else {
+
+				blank.splice(arr.indexOf(obj), 1, obj);
+
+				console.log(blank);
+				}
+			
+		}
+
+	madona.forEach(include(madona, userGuess));
+		
+
 		/*Need to return the position of the object in the array*/
 		/*console.log(madona.indexOf(userGuess));*/
 
@@ -56,14 +74,10 @@ document.onkeyup = function(event) {
 		/*Need to handle multiple occurances, while loop to check multiple times ?*/
 		/*for loop to run each letter??*/
 
-		blank.splice(madona.indexOf(userGuess), 1, userGuess);
-
-		console.log(blank);
+		
 
 		
-	} else {
-		console.log('try again');
-	}
+	
 	
 
 	

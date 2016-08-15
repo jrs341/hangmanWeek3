@@ -16,14 +16,21 @@ var blank = ['-']; /*doesnt' work when spelled out of order, blank array must eq
 
 var madona = ['m', 'a', 'd', 'o', 'n', 'a',];
 
+var band0 = "p,o,i,s,o,n";
+var band1 = "v,a,n, ,h,a,l,e,n";
+var band2 = "a,e,r,o,s,m,i,t,h";
+
 var hairbands = [];
 
-hairbands [0] = ['p','o','i','s','o','n'];
-hairbands [1] = ['v','a','n',' ','h','a','l','e','n'];
+hairbands [0] = band0.split(",");
+hairbands [1] = band1.split(",");
+hairbands [2] = band2.split(",");
+
+
 
 var random = hairbands[Math.floor(Math.random() * hairbands.length)];
 
-
+console.log(random);
 
 document.onkeyup = function(event) {
 
@@ -63,16 +70,12 @@ document.onkeyup = function(event) {
 			
 		}
 
-	madona.forEach(include(madona, userGuess));
+	random.forEach(include(random, userGuess));
 		
 
-		/*Need to return the position of the object in the array*/
-		/*console.log(madona.indexOf(userGuess));*/
 
-		/*Need to replace the "blank" with userGuess*/
 
-		/*Need to handle multiple occurances, while loop to check multiple times ?*/
-		/*for loop to run each letter??*/
+		
 
 		
 

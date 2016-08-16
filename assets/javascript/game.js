@@ -21,42 +21,57 @@ document.onkeyup = function(event) {
 			}
 		}
 	}
-	function include(arr, obj) {
 
-		var isLetterInWord = false;
-
-		for(var i=0; i<arr.length; i++) {
-			if (arr[i] == obj) {
-				isLetterInWord = true;
-				getIndex(obj);
-				console.log(obj);
-				blank.splice(getIndex(obj), 1, obj);
-				console.log(getIndex(obj));		 
-			}
-
-			if (isLetterInWord == true) {
-				for (var i = (getIndex(obj)) + 1 ; i < arr.length; i++) {
-						if (arr[i] == obj) {
-						getIndex2(obj);
-						blank.splice(getIndex2(obj), 1, obj);
-						console.log(getIndex2(obj));
-						}
-					
-				}
+	function getIndex3(obj) {
+		for (var i = getIndex2(obj) + 1; i < arr.length; i++) {
+			if (arr[i] === obj) {
+				return i;
 			}
 		}
 	}
 
+	function changeI(obj) {
+
+	}
+	function include(arr, obj) {
+
+		var isLetterInWord = false;
+
+		for(var i = 0; i < arr.length; i++) {
+			if (arr[i] == obj) { 
+				isLetterInWord = true;
+				getIndex(obj);
+				console.log(obj);
+				blank.splice(getIndex(obj), 1, obj);
+				console.log(getIndex(obj));	
+			} 
+			if (isLetterInWord == true) {
+				for (var i = (getIndex(obj)) + 1 ; i < arr.length; i++) {
+					if (arr[i] == obj) {
+						isLetterInWord = true;
+						getIndex2(obj);
+						blank.splice(getIndex2(obj), 1, obj);
+						console.log(getIndex2(obj));
+					}				
+				}
+			}
+			if (isLetterInWord == true) {
+				for (var i = (getIndex2(obj)) + 1; i < arr.length; i++) {
+					if (arr[i] == obj) {
+						getIndex3(obj);
+						blank.splice(getIndex3(obj), 1, obj);
+						console.log(getIndex3(obj));
+					}	
+				}
+			} 
+		} if (arr.indexOf(obj) === -1) {
+					console.log('try again');
+				} 
+	} 
+
 	include(arr, userGuess) 	
 
-	/*blank.splice(arr.indexOf(userGuess), 1, userGuess);*/
 
 	console.log(blank);
-
-		
-	/*else {
-		console.log('try again');
-	}*/
-	
 
 }

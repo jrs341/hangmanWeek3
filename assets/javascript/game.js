@@ -1,6 +1,24 @@
-var blank = ['-', '-', '-', '-', '-', '-'];
 
-var arr = ['m', 'a', 'd', 'a', 'n', 'a'];
+var band0 = "poison";
+var band1 = "van halen";
+var band2 = "aero smith";
+
+var hairbands = [];
+
+hairbands [0] = band0.split("");
+hairbands [1] = band1.split("");
+hairbands [2] = band2.split("");
+
+var arr = hairbands[Math.floor(Math.random() * hairbands.length)];
+
+var blank = new Array(arr.lenght);
+for (var i = 0; i < arr.length; i++) {
+	blank[i] = '_';
+}
+
+console.log(arr);
+console.log(blank);
+
 
 document.onkeyup = function(event) {
 

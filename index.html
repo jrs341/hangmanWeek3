@@ -10,40 +10,49 @@
 
 <body>
 
-<script type="text/javascript" href="assets/javascript/game.js">
+<script src = "assets/javascript/game.js">
 
-var blank = ['-', '-', '-', '-', '-', '-'];
+/*var blank = ['-', '-', '-', '-', '-', '-'];
 
 var madona = ['m', 'a', 'd', 'o', 'n', 'a'];
-
-/*var changing = [blank];*/
-
-
 
 document.onkeyup = function(event) {
 
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-// is there a funtion to test key up in an array "array.prototype.contains or includes"???
 
-	/*lost on this one /*Array.prototype.contains = function(userGuess) {
-		for (var i = 0; i < this.lenght; i++) {
-			if (this[i] == userGuess) {
-				console.log('t');
-			}
-		} 
-			console.log('f');
-		
-	};*/
-	/* need to run the forEach function first and have include function inside forEach function*/
-
-	function include(arr, obj) {
-		for(var i=0; i<arr.length; i++) {
-			if (arr[i] == obj)
-				return true;
+	function getIndex(obj) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] === obj) {
+				return i;
+				console.log(i);
 			}
 		}
+	}
+	function include(arr, obj) {
 
-		if (include(madona, userGuess)) {
+		var isLetterInWord = false;
+
+		for(var i=0; i<arr.length; i++) {
+			if (arr[i] == obj) {
+				isLetterInWord = true;
+				}
+				console.log(obj);
+			 
+			}
+
+			if (isLetterInWord == true) {
+				for (var i = (getIndex(obj)) + 1 ; i < arr.length; i++) {
+
+					console.log(i);
+					// need to return the position of the first itteration
+				}
+			}
+		}
+	}
+			
+		
+
+	include(madona, userGuess) 
 
 		/*madona.forEach(checkMultiples);*/
 
@@ -56,77 +65,15 @@ document.onkeyup = function(event) {
 		/*Need to handle multiple occurances, while loop to check multiple times ?*/
 		/*for loop to run each letter??*/
 
-		blank.splice(madona.indexOf(userGuess), 1, userGuess);
+	/*blank.splice(madona.indexOf(userGuess), 1, userGuess);
 
-		console.log(blank);
+		console.log(blank);*/
 
 		
-	} else {
+	/*else {
 		console.log('try again');
-	}
-	
-
-	
-
-		/*(userGuess == madona.contains('m')) {
-
-		/*((userGuess === 'm') || (userGuess === 'a') || (userGuess === 'd') || (userGuess === 'o') || (userGuess === 'n') || (userGuess === 'a')) {*/
-
-		/*if (userGuess === 'm') {*/
-
-		/*blank.splice(0, 1, "m");
-
-		console.log(blank);// insert function to replace element in array)
-
-		} */
-
-		/*else if (userGuess === 'a') {
-
-			 blank.splice(1, 1, 'a');
-			 blank.splice(5, 1, 'a');
-
-			 console.log(blank);
-
-		} 
-
-		else if (userGuess === 'a') {
-
-			 blank.splice(1, 1, 'a');
-
-			 console.log(blank);
-
-		}
-
-		else if (userGuess === 'd') {
-
-			 blank.splice(2, 1, 'd');
-
-			 console.log(blank);
-
-		}
-
-		else if (userGuess === 'o') {
-
-			 blank.splice(3, 1, 'o');
-
-			 console.log(blank);
-
-		}
-
-		else if (userGuess === 'n') {
-
-			 blank.splice(4, 1, 'n');
-
-			 console.log(blank);
-
-		} 
-		
-	else {
-		console.log("try again");
 	}*/
-
-
-
+	
 
 }
 	

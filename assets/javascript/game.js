@@ -1,40 +1,62 @@
-// assume each word is an array or an object?
-
-
-// how to display a blank until correct key is pushed?
-	// if else statment for each letter?
-
-// need to display a blank array, then overwrite blank array with correct letter or "SWITCH FUNCTION"?
-
 var blank = ['-', '-', '-', '-', '-', '-'];
 
-var madona = ['m', 'a', 'd', 'o', 'n', 'a'];
-
-var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+var arr = ['m', 'a', 'd', 'a', 'n', 'a'];
 
 document.onkeyup = function(event) {
-// is there a funtion to test key up in an array???
 
-	if ((userGuess === 'm') || (userGuess === 'a') || (userGuess === 'd') || (userGuess === 'o') || (userGuess === 'n') || (userGuess === 'a')) {
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-		if (userGuess === 'm') {
-		console.log(blank[]);// insert function to replace element in array)
-
+	function getIndex(obj) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] === obj) {
+				return i;
+			}
 		}
 	}
 
+	function getIndex2(obj) {
+		for (var i = getIndex(obj) + 1; i < arr.length; i++) {
+			if (arr[i] === obj) {
+				return i;
+			}
+		}
+	}
+	function include(arr, obj) {
 
+		var isLetterInWord = false;
 
+		for(var i=0; i<arr.length; i++) {
+			if (arr[i] == obj) {
+				isLetterInWord = true;
+				getIndex(obj);
+				console.log(obj);
+				blank.splice(getIndex(obj), 1, obj);
+				console.log(getIndex(obj));		 
+			}
+
+			if (isLetterInWord == true) {
+				for (var i = (getIndex(obj)) + 1 ; i < arr.length; i++) {
+						if (arr[i] == obj) {
+						getIndex2(obj);
+						blank.splice(getIndex2(obj), 1, obj);
+						console.log(getIndex2(obj));
+						}
+					
+				}
+			}
+		}
+	}
+
+	include(arr, userGuess) 	
+
+	/*blank.splice(arr.indexOf(userGuess), 1, userGuess);*/
+
+	console.log(blank);
+
+		
+	/*else {
+		console.log('try again');
+	}*/
+	
 
 }
-
-// hijacked count code
-
-/*var counter = function(count) {
-    console.log(">> setting count to " + this.count);
-    return {
-        getCount: function(){
-           return ++count;
-        }
-    }
-}*/

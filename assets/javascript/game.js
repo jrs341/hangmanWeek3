@@ -26,7 +26,7 @@ var isSpaceInWord = false;
 			}
 		}
 
-var numGuess = 0;
+var numGuessRem = 12;
 
 var numMatch = 0;
 
@@ -35,9 +35,9 @@ var numWrong = 0;
 var incorrect = [];
 
 var guessedLetters = [];
-	for (var i =0; i < 5; i++) {
+	/*for (var i =0; i < 5; i++) {
 		guessedLetters[i] = '_';
-	}
+	}*/
 
 console.log(arr);
 
@@ -97,15 +97,15 @@ document.onkeyup = function(event) {
 		/*if (guess.indexOf(userGuess) === userGuess) {
 				console.log('guess again you already chose that letter')
 			}*/
-		if (userGuess) {
-			guessedLetters.push(String.fromCharCode(event.keyCode).toLowerCase());
+
+		if (guessedLetters.indexOf(userGuess) > -1) {
+			console.log('you guessed that letter already knuckles');
 		}
 
-
-		if (guessedLetters.indexOf(userGuess) === -1) {
-			console.log('you guess that letter already knuckles');
+		if (obj) {
+			guessedLetters.push(obj);
+			numGuessRem --;
 		}
-
 
 		if (arr.indexOf(obj) === -1) {
 			console.log('try again');	
@@ -144,10 +144,12 @@ document.onkeyup = function(event) {
 		}
 	} 
 
-	include(arr, userGuess) 	
+	include(arr, userGuess) 
 
 	console.log(blank);
 
 	console.log(guessedLetters);
+
+	console.log(numGuessRem);
 	
 }

@@ -34,8 +34,17 @@ var numWrong = 0;
 
 var incorrect = [];
 
+var guessedLetters = [];
+	for (var i =0; i < 5; i++) {
+		guessedLetters[i] = '_';
+	}
+
 console.log(arr);
+
 console.log(blank);
+
+console.log(guessedLetters);
+
 
 
 document.onkeyup = function(event) {
@@ -71,6 +80,8 @@ document.onkeyup = function(event) {
 	}
 	function include(arr, obj) {
 
+	
+
 		/*else {
                     lettersGuessed += guess;
                     lives--;
@@ -82,9 +93,27 @@ document.onkeyup = function(event) {
 		// need something to count here
 	/*for (count = 0; i < 4; i++) */
 
+
+		/*if (guess.indexOf(userGuess) === userGuess) {
+				console.log('guess again you already chose that letter')
+			}*/
+		if (userGuess) {
+			guessedLetters.push(String.fromCharCode(event.keyCode).toLowerCase());
+		}
+
+
+		if (guessedLetters.indexOf(userGuess) === -1) {
+			console.log('you guess that letter already knuckles');
+		}
+
+
+		if (arr.indexOf(obj) === -1) {
+			console.log('try again');	
+		}
+
+
 		var isLetterInWord = false;
 		
-	
 		for(var i = 0; i < arr.length; i++) {
 			if (arr[i] === obj) { 
 				isLetterInWord = true;
@@ -112,18 +141,13 @@ document.onkeyup = function(event) {
 					}	
 				}
 			} 
-			if (arr.indexOf(obj) === -1) {
-					console.log('try again');
-				} 
-			}
+		}
 	} 
-
-		
-		
 
 	include(arr, userGuess) 	
 
-
 	console.log(blank);
+
+	console.log(guessedLetters);
 	
 }

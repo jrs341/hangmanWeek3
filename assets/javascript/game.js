@@ -8,7 +8,7 @@ var hairbands = ["poison", "van halen", "aero smith", "white snake"];
 /*hairbands [0] = band0.split("");
 hairbands [1] = band1.split("");
 hairbands [2] = band2.split("");*/
-
+// var letters = 
 var arr = hairbands[Math.floor(Math.random() * hairbands.length)];
 
 var blank = new Array(arr.lenght);
@@ -16,15 +16,11 @@ for (var i = 0; i < arr.length; i++) {
 	blank[i] = '_';
 }
 
-var isSpaceInWord = false;
-
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] === " ") {
-				isSpaceInWord = true;
-				var space = arr.indexOf(" ");
-				blank.splice(space, 1, " ");
-			}
-		}
+for (var i = 0; i < arr.length; i++) {
+	if (arr[i] === " ") {
+	blank.splice(i, 1, " ");
+	}
+}
 
 var numGuessRem = 12;
 
@@ -35,9 +31,9 @@ var numWrong = 0;
 var incorrect = [];
 
 var guessedLetters = [];
-	/*for (var i =0; i < 5; i++) {
-		guessedLetters[i] = '_';
-	}*/
+	// for (var i =0; i < 12; i++) {
+		// guessedLetters[i] = '_';
+	// }
 
 console.log(arr);
 
@@ -45,39 +41,18 @@ console.log(blank);
 
 console.log(guessedLetters);
 
-
+var endGame = true;
 
 document.onkeyup = function(event) {
 
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-	function getIndex(obj) {
-		for (var i = 0; i < arr.length; i++) {
-			if (arr[i] === obj) {
-				return i;
-			}
-		}
-	}
-
-	function getIndex2(obj) {
-		for (var i = getIndex(obj) + 1; i < arr.length; i++) {
-			if (arr[i] === obj) {
-				return i;
-			}
-		}
-	}
-
-	function getIndex3(obj) {
-		for (var i = getIndex2(obj) + 1; i < arr.length; i++) {
-			if (arr[i] === obj) {
-				return i;
-			}
-		}
-	}
-
-	function changeI(obj) {
-
-	}
+	if (numGuessRem === 0) {
+		console.log('Game Over');
+		endGame = false;
+		
+	} else {
+		
 	function include(arr, obj) {
 
 	
@@ -98,6 +73,7 @@ document.onkeyup = function(event) {
 				console.log('guess again you already chose that letter')
 			}*/
 
+
 		if (guessedLetters.indexOf(userGuess) > -1) {
 			console.log('you guessed that letter already knuckles');
 		}
@@ -111,36 +87,12 @@ document.onkeyup = function(event) {
 			console.log('try again');	
 		}
 
-
-		var isLetterInWord = false;
-		
 		for(var i = 0; i < arr.length; i++) {
 			if (arr[i] === obj) { 
-				isLetterInWord = true;
-				getIndex(obj);
 				console.log(obj);
-				blank.splice(getIndex(obj), 1, obj);
-				console.log(getIndex(obj));	
-			} 
-			if (isLetterInWord == true) {
-				for (var i = (getIndex(obj)) + 1 ; i < arr.length; i++) {
-					if (arr[i] == obj) {
-						isLetterInWord = true;
-						getIndex2(obj);
-						blank.splice(getIndex2(obj), 1, obj);
-						console.log(getIndex2(obj));
-					}				
-				}
+				blank.splice(i, 1, obj);
+				console.log(i);	
 			}
-			if (isLetterInWord == true) {
-				for (var i = (getIndex2(obj)) + 1; i < arr.length; i++) {
-					if (arr[i] == obj) {
-						getIndex3(obj);
-						blank.splice(getIndex3(obj), 1, obj);
-						console.log(getIndex3(obj));
-					}	
-				}
-			} 
 		}
 	} 
 
@@ -151,5 +103,14 @@ document.onkeyup = function(event) {
 	console.log(guessedLetters);
 
 	console.log(numGuessRem);
+
 	
+
+	/*for (var i = 0; i < arr.length; i++) {/*and not for spaces to this
+		if (arr === blank.join()) {
+			console.log("You Win");
+		}
+	}*/
+}	
 }
+

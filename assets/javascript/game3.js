@@ -8,6 +8,8 @@ var arr = hairbands[Math.floor(Math.random() * hairbands.length)];
 
 var blank = new Array(arr.lenght);
 
+// var blankArr = arr.split("");
+
 for (var i = 0; i < arr.length; i++) {
 	blank[i] = '_';
 }
@@ -37,23 +39,30 @@ function include(arr, obj) {
 				blank.splice(i, 1, obj);
 			}
 		}
-	}
+}
+
+// reference: http://stackoverflow.com/questions/30820611/javascript-arrays-cannot-equal-each-other
+function arraysEqual(arr1, arr2) {
+
+		if (arr1.split("").toString() == arr2.join()) {
+			console.log('You Win');
+		} else {
+			console.log('Keep Going');
+		}	
+	
+}
 
 	console.log(arr);
 
-	console.log(blank);
+	console.log(blank.toString());
+
+	console.log(arr.split("").toString());
+
+	console.log(blank.join());
 
 	document.onkeyup = function(event) {
 
-		var continueGame = true;
-
-		// var gameOver = continueGame;
-
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-		// console.log(userGuess);
-	
-		if (continueGame = true) {
 
 			if(numGuessRem >= 1) {
 
@@ -61,17 +70,16 @@ function include(arr, obj) {
 
 			include(arr, userGuess);
 
-			console.log(userGuess);
+			arraysEqual(arr, blank);
+
 			} 
+
 			else if (numGuessRem === 0) {
 
-			// numGuessRem --;
-
-			// include(arr, userGuess);
+			arraysEqual(arr, blank);
 
 			console.log('Game Over');
 
-			return continueGame = false;
 			}
 
 		console.log(arr);
@@ -81,9 +89,5 @@ function include(arr, obj) {
 		console.log(guessedLetters);
 
 		console.log(numGuessRem);
-
-		} else {
-			console.log('Game Over 2');
-		}
 	}
 

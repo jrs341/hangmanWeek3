@@ -1,5 +1,4 @@
 
-
 var guessedLetters = [];
 
 var hairbands = ["poison", "van halen", "aero smith", "white snake"];
@@ -101,4 +100,6 @@ function arraysEqual(arr1, arr2) {
 
 		console.log(wins);
 	}
+
+document.getElementById('word').innerHTML = blank;
 

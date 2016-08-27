@@ -1,3 +1,12 @@
+html, body {
+	height: 100%;
+	width: 960px;
+}
+
+body {
+	padding: 10px;
+}
+
 #word {
 	
 }

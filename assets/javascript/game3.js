@@ -28,6 +28,7 @@ function include(arr, obj) {
 
 		if (guessedLetters.indexOf(obj) > -1 && numGuessRem >= 1) {
 			console.log('you guessed that letter already');
+			document.getElementById('status').innerHTML = 'You Guessed That Letter Already';
 		}
 
 		if (obj) {
@@ -35,7 +36,8 @@ function include(arr, obj) {
 		}
 		// this is where the hangman will go
 		if (arr.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
-			console.log('try again');	
+			console.log('try again');
+			document.getElementById('status').innerHTML = 'Try Again';
 		}
 
 		for(var i = 0; i < arr.length; i++) {
@@ -51,9 +53,10 @@ function arraysEqual(arr1, arr2) {
 		if (arr1.split("").toString() == arr2.join()) {
 			console.log('You Win');
 			wins ++;
-			document.getElementById('status') = 'You Win';
+			document.getElementById('status').innerHTML = 'You Win';
 			return continueGame = false;
 		} else {
+			document.getElementById('status').innerHTML = 'Keep Trying';
 			console.log('Keep Going');
 		}	
 	

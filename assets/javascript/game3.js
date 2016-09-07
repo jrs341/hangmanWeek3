@@ -13,10 +13,11 @@ var wins = 0;
 
 var continueGame = true;
 
+// this adds an underline to each letter of the band name
 for (var i = 0; i < arr.length; i++) {
-	blank[i] = '_';
+	blank[i] = ' _ ';
 }
-
+// this looks for a space in the band name
 for (var i = 0; i < arr.length; i++) {
 	if (arr[i] === " ") {
 	blank.splice(i, 1, " ");
@@ -32,8 +33,8 @@ function include(arr, obj) {
 		if (obj) {
 			guessedLetters.push(obj);
 		}
-
-		if (arr.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split("").toString() != blank.join()) {
+		// this is where the hangman will go
+		if (arr.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
 			console.log('try again');	
 		}
 
@@ -90,6 +91,9 @@ function arraysEqual(arr1, arr2) {
 			}
 		}
 
+		document.getElementById('word').innerHTML = blank;
+		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
+
 		console.log(arr);
 
 		console.log(blank);
@@ -101,5 +105,4 @@ function arraysEqual(arr1, arr2) {
 		console.log(wins);
 	}
 
-document.getElementById('word').innerHTML = blank;
 

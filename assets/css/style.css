@@ -9,9 +9,25 @@ html, body {
 
 body {
 	padding: 10px;
-
 }
 
-#word {
-	
+header {
+}
+
+#header {
+	font-family: Comic Sans MS, cursive, sans-serif;
+	color: #ffffff;
+	font-size: 60px;
+}
+
+p {
+	font-family: Comic Sans MS, cursive, sans-serif;
+	color: #ffffff;
+	font-size: 25px;
+}
+
+#word {	
+}
+
+#guessedLeters {
 }

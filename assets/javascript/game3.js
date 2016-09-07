@@ -51,6 +51,7 @@ function arraysEqual(arr1, arr2) {
 		if (arr1.split("").toString() == arr2.join()) {
 			console.log('You Win');
 			wins ++;
+			document.getElementById('status') = 'You Win';
 			return continueGame = false;
 		} else {
 			console.log('Keep Going');
@@ -60,7 +61,7 @@ function arraysEqual(arr1, arr2) {
 
 	document.getElementById('word').innerHTML = blank.join(' ');
 	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
-
+	document.getElementById('wins').innerHTML = wins;
 	document.onkeyup = function(event) {
 
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();

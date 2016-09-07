@@ -27,16 +27,7 @@ p {
 	font-size: 25px;
 }
 
-img {
-	/*float: right;*/
-}
-
-.img {
-	/*float: right;*/
-}
-
-.container {
-	
+#status {
 }
 
 .gallow {	
@@ -47,4 +38,8 @@ img {
 }
 
 #guessedLeters {
+	height: 25px;
+}
+
+#wins {
 }

@@ -20,7 +20,7 @@ for (var i = 0; i < arr.length; i++) {
 // this looks for a space in the band name
 for (var i = 0; i < arr.length; i++) {
 	if (arr[i] === " ") {
-	blank.splice(i, 1, " ");
+	blank.splice(i, 1, " - ");
 	}
 }
 
@@ -91,7 +91,7 @@ function arraysEqual(arr1, arr2) {
 			}
 		}
 
-		document.getElementById('word').innerHTML = blank;
+		document.getElementById('word').innerHTML = blank.join(' ');
 		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
 
 		console.log(arr);

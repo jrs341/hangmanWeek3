@@ -58,13 +58,8 @@ function arraysEqual(arr1, arr2) {
 	
 }
 
-	console.log(arr);
-
-	console.log(blank);
-
-	console.log(numGuessRem);
-
-	console.log(wins);
+	document.getElementById('word').innerHTML = blank.join(' ');
+	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
 
 	document.onkeyup = function(event) {
 
@@ -94,15 +89,6 @@ function arraysEqual(arr1, arr2) {
 		document.getElementById('word').innerHTML = blank.join(' ');
 		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
 
-		console.log(arr);
-
-		console.log(blank);
-
-		console.log(guessedLetters);
-
-		console.log(numGuessRem);
-
-		console.log(wins);
 	}
 
 

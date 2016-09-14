@@ -7,9 +7,13 @@ var arr = hairbands[Math.floor(Math.random() * hairbands.length)];
 
 var blank = new Array(arr.lenght);
 
-var numGuessRem = arr.length + 3;
+var numGuessRem = arr.length + 6;
+
+var wrongGuess = 0;
 
 var wins = 0;
+
+var losses = 0;
 
 var continueGame = true;
 
@@ -30,14 +34,16 @@ for (var i = 0; i < arr.length; i++) {
 function include(arr, obj) {
 
 		if (guessedLetters.indexOf(obj) > -1 && numGuessRem >= 1) {
-			console.log('you guessed that letter already');
+			wrongGuess++;
 			document.getElementById('status').innerHTML = 'You Guessed That Letter Already';
 		} // this is where the hangman will go
 		else if (arr.indexOf(obj) === -1 && guessedLetters.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
-			console.log('try again');
+			wrongGuess++;
 			document.getElementById('status').innerHTML = 'Try Again';
+		} else {
+			document.getElementById('status').innerHTML = 'Good Guess';
 		}
-		
+
 		if (obj) {
 			guessedLetters.push(obj);
 		}
@@ -57,9 +63,9 @@ function arraysEqual(arr1, arr2) {
 			wins ++;
 			document.getElementById('status').innerHTML = 'You Win';
 			return continueGame = false;
-		} else {
-			// document.getElementById('status').innerHTML = 'Keep Trying';
-			console.log('Keep Going');
+		} else if (arr1.split("").toString() != arr2.join() && numGuessRem === 0){
+			document.getElementById('status').innerHTML = 'You lost, the band is ' + arr + ' would you like to play again?';
+			losses++;
 		}	
 	
 }
@@ -67,6 +73,7 @@ function arraysEqual(arr1, arr2) {
 	document.getElementById('word').innerHTML = blank.join(' ');
 	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
 	document.getElementById('wins').innerHTML = 'Wins: ' + wins;
+	document.getElementById('losses').innerHTML = 'Losses: ' + losses;
 
 	document.onkeyup = function(event) {
 
@@ -88,14 +95,13 @@ function arraysEqual(arr1, arr2) {
 
 			arraysEqual(arr, blank);
 
-			console.log('Game Over');
-
 			}
 		}
 
 		document.getElementById('word').innerHTML = blank.join(' ');
 		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
 		document.getElementById('wins').innerHTML = 'Wins: ' + wins;
+		document.getElementById('losses').innerHTML = 'Losses: ' + losses;
 	}
 
 

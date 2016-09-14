@@ -17,6 +17,8 @@ var losses = 0;
 
 var continueGame = true;
 
+var emoji = document.createElement('img');
+
 // this adds an underline to each letter of the band name
 for (var i = 0; i < arr.length; i++) {
 	blank[i] = ' _ ';
@@ -40,6 +42,26 @@ function include(arr, obj) {
 		else if (arr.indexOf(obj) === -1 && guessedLetters.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
 			wrongGuess++;
 			document.getElementById('status').innerHTML = 'Try Again';
+				if (wrongGuess === 1) {
+					emoji.src = 'javascript/flushedFace.png';
+					document.getElementById('gallow').appendChild(emoji);
+
+				}
+				else if (wrongGuess === 2) {
+
+				}
+				else if (wrongGuess === 3) {
+
+				}
+				else if (wrongGuess === 4) {
+
+				}
+				else if (wrongGuess === 5) {
+
+				}
+				else if (wrongGuess === 6) {
+
+				}
 		} else {
 			document.getElementById('status').innerHTML = 'Good Guess';
 		}

@@ -28,6 +28,7 @@ p {
 }
 
 #status {
+	height: 50px;
 }
 
 .gallow {	
@@ -37,8 +38,8 @@ p {
 #word {	
 }
 
-#guessedLeters {
-	height: 25px;
+#guessedLetters {
+	height: 50px;
 }
 
 #wins {

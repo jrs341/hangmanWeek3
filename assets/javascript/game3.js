@@ -16,13 +16,16 @@ var continueGame = true;
 // this adds an underline to each letter of the band name
 for (var i = 0; i < arr.length; i++) {
 	blank[i] = ' _ ';
-}
-// this looks for a space in the band name
-for (var i = 0; i < arr.length; i++) {
-	if (arr[i] === " ") {
-	blank.splice(i, 1, " - ");
+	if (arr[i] == ' ') {
+		blank[i] = ' ';
 	}
 }
+// this looks for a space in the band name
+// for (var i = 0; i < arr.length; i++) {
+	// if (arr[i] === " ") {
+	// blank.splice(i, 1, "-");
+	// }
+// }
 
 function include(arr, obj) {
 
@@ -56,7 +59,7 @@ function arraysEqual(arr1, arr2) {
 			document.getElementById('status').innerHTML = 'You Win';
 			return continueGame = false;
 		} else {
-			document.getElementById('status').innerHTML = 'Keep Trying';
+			// document.getElementById('status').innerHTML = 'Keep Trying';
 			console.log('Keep Going');
 		}	
 	
@@ -64,7 +67,8 @@ function arraysEqual(arr1, arr2) {
 
 	document.getElementById('word').innerHTML = blank.join(' ');
 	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
-	document.getElementById('wins').innerHTML = wins;
+	document.getElementById('wins').innerHTML = 'Wins: ' + wins;
+
 	document.onkeyup = function(event) {
 
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
@@ -92,7 +96,7 @@ function arraysEqual(arr1, arr2) {
 
 		document.getElementById('word').innerHTML = blank.join(' ');
 		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
-
+		document.getElementById('wins').innerHTML = 'Wins: ' + wins;
 	}
 
 

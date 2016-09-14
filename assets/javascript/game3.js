@@ -32,17 +32,16 @@ function include(arr, obj) {
 		if (guessedLetters.indexOf(obj) > -1 && numGuessRem >= 1) {
 			console.log('you guessed that letter already');
 			document.getElementById('status').innerHTML = 'You Guessed That Letter Already';
-		}
-
-		if (obj) {
-			guessedLetters.push(obj);
-		}
-		// this is where the hangman will go
-		if (arr.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
+		} // this is where the hangman will go
+		else if (arr.indexOf(obj) === -1 && guessedLetters.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
 			console.log('try again');
 			document.getElementById('status').innerHTML = 'Try Again';
 		}
-
+		
+		if (obj) {
+			guessedLetters.push(obj);
+		}
+		
 		for(var i = 0; i < arr.length; i++) {
 			if (arr.split("")[i] === obj) { 
 				blank.splice(i, 1, obj);

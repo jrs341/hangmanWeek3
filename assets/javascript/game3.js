@@ -43,8 +43,9 @@ function include(arr, obj) {
 			wrongGuess++;
 			document.getElementById('status').innerHTML = 'Try Again';
 				if (wrongGuess === 1) {
-					emoji.src = 'javascript/flushedFace.png';
-					document.getElementById('gallow').appendChild(emoji);
+					emoji.src = 'assets/javascript/flushedFace.png';
+					emoji.setAttribute('position', 'absolute');
+					document.getElementById('images').appendChild(emoji);
 
 				}
 				else if (wrongGuess === 2) {

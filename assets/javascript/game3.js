@@ -43,25 +43,34 @@ function include(arr, obj) {
 			wrongGuess++;
 			document.getElementById('status').innerHTML = 'Try Again';
 				if (wrongGuess === 1) {
-					emoji.src = 'assets/javascript/flushedFace.png';
+					emoji.src = 'assets/images/flushedFace.png';
 					emoji.setAttribute('position', 'absolute');
 					document.getElementById('images').appendChild(emoji);
-
 				}
 				else if (wrongGuess === 2) {
-
+					emoji.src = 'assets/images/disappointedFace.png';
+					emoji.setAttribute('position', 'absolute');
+					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 3) {
-
+					emoji.src = 'assets/images/angryFace.png';
+					emoji.setAttribute('position', 'absolute');
+					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 4) {
-
+					emoji.src = 'assets/images/triumphFace.png';
+					emoji.setAttribute('position', 'absolute');
+					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 5) {
-
+					emoji.src = 'assets/images/cryingFace.png';
+					emoji.setAttribute('position', 'absolute');
+					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 6) {
-
+					emoji.src = 'assets/images/dizzyFace.png';
+					emoji.setAttribute('position', 'absolute');
+					document.getElementById('images').appendChild(emoji);
 				}
 		} else {
 			document.getElementById('status').innerHTML = 'Good Guess';

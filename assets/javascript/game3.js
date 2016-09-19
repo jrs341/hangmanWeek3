@@ -43,33 +43,34 @@ function include(arr, obj) {
 			wrongGuess++;
 			document.getElementById('status').innerHTML = 'Try Again';
 				if (wrongGuess === 1) {
+					// emoji.style.z-index = '10';
 					emoji.src = 'assets/images/flushedFace.png';
-					emoji.setAttribute('position', 'absolute');
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
 					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 2) {
 					emoji.src = 'assets/images/disappointedFace.png';
-					emoji.setAttribute('position', 'absolute');
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
 					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 3) {
 					emoji.src = 'assets/images/angryFace.png';
-					emoji.setAttribute('position', 'absolute');
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
 					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 4) {
 					emoji.src = 'assets/images/triumphFace.png';
-					emoji.setAttribute('position', 'absolute');
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
 					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 5) {
 					emoji.src = 'assets/images/cryingFace.png';
-					emoji.setAttribute('position', 'absolute');
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
 					document.getElementById('images').appendChild(emoji);
 				}
 				else if (wrongGuess === 6) {
 					emoji.src = 'assets/images/dizzyFace.png';
-					emoji.setAttribute('position', 'absolute');
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
 					document.getElementById('images').appendChild(emoji);
 				}
 		} else {

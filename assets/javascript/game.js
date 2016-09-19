@@ -1,103 +1,140 @@
 
-/*var band0 = "poison";
-var band1 = "van halen";
-var band2 = "aero smith";*/
+var guessedLetters = [];
 
 var hairbands = ["poison", "van halen", "aero smith", "white snake"];
-
-/*hairbands [0] = band0.split("");
-hairbands [1] = band1.split("");
-hairbands [2] = band2.split("");*/
 
 var arr = hairbands[Math.floor(Math.random() * hairbands.length)];
 
 var blank = new Array(arr.lenght);
-for (var i = 0; i < arr.length; i++) {
-	blank[i] = '_';
-}
 
+var numGuessRem = arr.length + 6;
+
+var wrongGuess = 0;
+
+var wins = 0;
+
+var losses = 0;
+
+var continueGame = true;
+
+var emoji = document.createElement('img');
+
+// this adds an underline to each letter of the band name
 for (var i = 0; i < arr.length; i++) {
-	if (arr[i] === " ") {
-	blank.splice(i, 1, " ");
+	blank[i] = ' _ ';
+	if (arr[i] == ' ') {
+		blank[i] = ' ';
 	}
 }
+// this looks for a space in the band name
+// for (var i = 0; i < arr.length; i++) {
+	// if (arr[i] === " ") {
+	// blank.splice(i, 1, "-");
+	// }
+// }
 
-var blankArr = arr.split("");
+function include(arr, obj) {
 
-var numGuessRem = 12;
-
-var numMatch = 0;
-
-var numWrong = 0;
-
-var incorrect = [];
-
-var guessedLetters = [];
-	
-var endGame = true;
-
-console.log(arr);
-
-console.log(blank);
-
-console.log(guessedLetters);
-
-document.onkeyup = function(event) {
-
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-	function arraysEqual(arr1, arr2) {
-
-		if (blankArr !== blank.toString()) {
-			endGame = true;
+		if (guessedLetters.indexOf(obj) > -1 && numGuessRem >= 1) {
+			wrongGuess++;
+			document.getElementById('status').innerHTML = 'You Guessed That Letter Already';
+		} // this is where the hangman will go
+		else if (arr.indexOf(obj) === -1 && guessedLetters.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
+			wrongGuess++;
+			document.getElementById('status').innerHTML = 'Try Again';
+				if (wrongGuess === 1) {
+					// emoji.style.z-index = '10';
+					emoji.src = 'assets/images/flushedFace.png';
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+					document.getElementById('images').appendChild(emoji);
+				}
+				else if (wrongGuess === 2) {
+					emoji.src = 'assets/images/disappointedFace.png';
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+					document.getElementById('images').appendChild(emoji);
+				}
+				else if (wrongGuess === 3) {
+					emoji.src = 'assets/images/angryFace.png';
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+					document.getElementById('images').appendChild(emoji);
+				}
+				else if (wrongGuess === 4) {
+					emoji.src = 'assets/images/triumphFace.png';
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+					document.getElementById('images').appendChild(emoji);
+				}
+				else if (wrongGuess === 5) {
+					emoji.src = 'assets/images/cryingFace.png';
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+					document.getElementById('images').appendChild(emoji);
+				}
+				else if (wrongGuess === 6) {
+					emoji.src = 'assets/images/dizzyFace.png';
+					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+					document.getElementById('images').appendChild(emoji);
+				}
 		} else {
-			console.log('You Win');
-			endGame = false;
-		}
-	}
-	
-
-	function include(arr, obj) {
-
-		if (guessedLetters.indexOf(userGuess) > -1) {
-			console.log('you guessed that letter already');
+			document.getElementById('status').innerHTML = 'Good Guess';
 		}
 
 		if (obj) {
 			guessedLetters.push(obj);
-			numGuessRem --;
 		}
-
-		if (arr.indexOf(obj) === -1) {
-			console.log('try again');	
-		}
-
+		
 		for(var i = 0; i < arr.length; i++) {
 			if (arr.split("")[i] === obj) { 
-				console.log(obj);
 				blank.splice(i, 1, obj);
-				console.log(i);	
 			}
 		}
-	}
-
-	if (numGuessRem === 0) {
-		console.log('Game Over');
-		endGame = false;
-	}
-
-	include(arr, userGuess) 
-
-	
-
-	console.log(blank);
-
-	console.log(guessedLetters);
-
-	console.log(numGuessRem);
-
 }
 
+// reference: http://stackoverflow.com/questions/30820611/javascript-arrays-cannot-equal-each-other
+function arraysEqual(arr1, arr2) {
 
+		if (arr1.split("").toString() == arr2.join()) {
+			console.log('You Win');
+			wins ++;
+			document.getElementById('status').innerHTML = 'You Win';
+			return continueGame = false;
+		} else if (arr1.split("").toString() != arr2.join() && numGuessRem === 0){
+			document.getElementById('status').innerHTML = 'You lost, the band is ' + arr + ' would you like to play again?';
+			losses++;
+		}	
+	
+}
+
+	document.getElementById('word').innerHTML = blank.join(' ');
+	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
+	document.getElementById('wins').innerHTML = 'Wins: ' + wins;
+	document.getElementById('losses').innerHTML = 'Losses: ' + losses;
+
+	document.onkeyup = function(event) {
+
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+		if (continueGame) {
+
+			if(numGuessRem >= 1) {
+
+			numGuessRem --;
+
+			include(arr, userGuess);
+
+			arraysEqual(arr, blank);
+
+			} 
+
+			else if (numGuessRem === 0) {
+
+			arraysEqual(arr, blank);
+
+			}
+		}
+
+		document.getElementById('word').innerHTML = blank.join(' ');
+		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
+		document.getElementById('wins').innerHTML = 'Wins: ' + wins;
+		document.getElementById('losses').innerHTML = 'Losses: ' + losses;
+	}
 
 

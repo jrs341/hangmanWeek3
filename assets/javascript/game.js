@@ -32,7 +32,10 @@ for (var i = 0; i < arr.length; i++) {
 	// blank.splice(i, 1, "-");
 	// }
 // }
-
+function emojiAppend() {
+	emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+	document.getElementById('images').appendChild(emoji);
+}
 function include(arr, obj) {
 
 		if (guessedLetters.indexOf(obj) > -1 && numGuessRem >= 1) {
@@ -43,35 +46,28 @@ function include(arr, obj) {
 			wrongGuess++;
 			document.getElementById('status').innerHTML = 'Try Again';
 				if (wrongGuess === 1) {
-					// emoji.style.z-index = '10';
 					emoji.src = 'assets/images/flushedFace.png';
-					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
-					document.getElementById('images').appendChild(emoji);
+					emojiAppend();
 				}
 				else if (wrongGuess === 2) {
 					emoji.src = 'assets/images/disappointedFace.png';
-					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
-					document.getElementById('images').appendChild(emoji);
+					emojiAppend();
 				}
 				else if (wrongGuess === 3) {
 					emoji.src = 'assets/images/angryFace.png';
-					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
-					document.getElementById('images').appendChild(emoji);
+					emojiAppend();
 				}
 				else if (wrongGuess === 4) {
 					emoji.src = 'assets/images/triumphFace.png';
-					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
-					document.getElementById('images').appendChild(emoji);
+					emojiAppend();
 				}
 				else if (wrongGuess === 5) {
 					emoji.src = 'assets/images/cryingFace.png';
-					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
-					document.getElementById('images').appendChild(emoji);
+					emojiAppend();
 				}
 				else if (wrongGuess === 6) {
 					emoji.src = 'assets/images/dizzyFace.png';
-					emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
-					document.getElementById('images').appendChild(emoji);
+					emojiAppend();
 				}
 		} else {
 			document.getElementById('status').innerHTML = 'Good Guess';
@@ -91,16 +87,21 @@ function include(arr, obj) {
 // reference: http://stackoverflow.com/questions/30820611/javascript-arrays-cannot-equal-each-other
 function arraysEqual(arr1, arr2) {
 
-		if (arr1.split("").toString() == arr2.join()) {
-			console.log('You Win');
-			wins ++;
-			document.getElementById('status').innerHTML = 'You Win';
-			return continueGame = false;
-		} else if (arr1.split("").toString() != arr2.join() && numGuessRem === 0){
-			document.getElementById('status').innerHTML = 'You lost, the band is ' + arr + ' would you like to play again?';
-			losses++;
-		}	
-	
+	if (arr1.split("").toString() == arr2.join()) {
+		wins ++;
+		emoji.src = 'assets/images/grinningFace.png';
+		emojiAppend();
+		document.getElementById('status').innerHTML = 'You Win';
+		return continueGame = false;
+	} else if (wrongGuess === 6) {
+		document.getElementById('status').innerHTML = 'You lost, the band is ' + arr + ' would you like to play again?';
+		losses++;
+		return continueGame = false;
+	} 
+}
+
+function reload() {
+	location.relaod(false);
 }
 
 	document.getElementById('word').innerHTML = blank.join(' ');
@@ -108,28 +109,28 @@ function arraysEqual(arr1, arr2) {
 	document.getElementById('wins').innerHTML = 'Wins: ' + wins;
 	document.getElementById('losses').innerHTML = 'Losses: ' + losses;
 
-	document.onkeyup = function(event) {
+document.onkeyup = function(event) {
 
-		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-		if (continueGame) {
+if (continueGame) {
 
-			if(numGuessRem >= 1) {
+	if(numGuessRem > 0) {
 
-			numGuessRem --;
+		numGuessRem --;
 
-			include(arr, userGuess);
+		include(arr, userGuess);
 
-			arraysEqual(arr, blank);
+		arraysEqual(arr, blank);
 
-			} 
+		} 
 
-			else if (numGuessRem === 0) {
+		else if (event.keyCode == 13 ) {
 
-			arraysEqual(arr, blank);
-
-			}
+		location.relaod(false);
+		
 		}
+	}
 
 		document.getElementById('word').innerHTML = blank.join(' ');
 		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');

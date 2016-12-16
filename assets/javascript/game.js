@@ -113,29 +113,28 @@ document.onkeyup = function(event) {
 
 var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-if (continueGame) {
+	if (continueGame) {
 
-	if(numGuessRem > 0) {
+		// if (even.keyCode == 13) {
+		// 	location.relaod();
+		// }
 
-		numGuessRem --;
+		 if (numGuessRem > 0) {
 
-		include(arr, userGuess);
+			numGuessRem --;
 
-		arraysEqual(arr, blank);
+			include(arr, userGuess);
+
+			arraysEqual(arr, blank);
 
 		} 
 
-		else if (event.keyCode == 13 ) {
-
-		location.relaod(false);
-		
-		}
 	}
 
 		document.getElementById('word').innerHTML = blank.join(' ');
 		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
 		document.getElementById('wins').innerHTML = 'Wins: ' + wins;
 		document.getElementById('losses').innerHTML = 'Losses: ' + losses;
-	}
+}
 
 

@@ -13,7 +13,11 @@ var wrongGuess = 0;
 
 var wins = 0;
 
+localStorage.wins = wins;
+
 var losses = 0;
+
+localStorage.losses = losses;
 
 var continueGame = true;
 
@@ -21,17 +25,14 @@ var emoji = document.createElement('img');
 
 // this adds an underline to each letter of the band name
 for (var i = 0; i < arr.length; i++) {
+	if (arr[i].indexOf(' ') >= 0) {
+		blank[i] = " - ";
+	} 
+	else {
 	blank[i] = ' _ ';
-	if (arr[i] == ' ') {
-		blank[i] = ' ';
-	}
+	}	
 }
-// this looks for a space in the band name
-// for (var i = 0; i < arr.length; i++) {
-	// if (arr[i] === " ") {
-	// blank.splice(i, 1, "-");
-	// }
-// }
+
 function emojiAppend() {
 	emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
 	document.getElementById('images').appendChild(emoji);
@@ -100,9 +101,9 @@ function arraysEqual(arr1, arr2) {
 	} 
 }
 
-function reload() {
-	location.relaod(false);
-}
+// function reload() {
+// 	location.relaod(false);
+// }
 
 	document.getElementById('word').innerHTML = blank.join(' ');
 	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
@@ -112,12 +113,14 @@ function reload() {
 document.onkeyup = function(event) {
 
 var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+	if (event.keyCode == 13) {
+		location.reload();
+		continueGame = true;
+		wins = localStorage.wins;
+		losses = localStorage.losses;
+	}
 
-	if (continueGame) {
-
-		// if (even.keyCode == 13) {
-		// 	location.relaod();
-		// }
+	else if (continueGame) {
 
 		 if (numGuessRem > 0) {
 

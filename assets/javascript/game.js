@@ -18,7 +18,7 @@ var emoji = document.createElement('img');
 // this for loop adds an underline to each letter of the band name or places a dash if there is a space
 for (var i = 0; i < arr.length; i++) {
 	if (arr[i].indexOf(' ') >= 0) {
-		blank[i] = " - ";
+		blank[i] = " ";
 	} 
 	else {
 	blank[i] = ' _ ';
@@ -27,12 +27,14 @@ for (var i = 0; i < arr.length; i++) {
 
 function winCounter() {
     if(typeof(Storage) !== "undefined") {
-        if (localStorage.wincount) {
-            localStorage.wincount = Number(localStorage.wincount)+1;
+        if (sessionStorage.wincount) {
+            sessionStorage.wincount = Number(sessionStorage.wincount)+1;
+            wins = sessionStorage.wincount;
         } else {
-            localStorage.wincount = 0;
+            sessionStorage.wincount = 1;
+            wins = 0;
         }
-        document.getElementById('wins').innerHTML = 'Wins: ' + localStorage.wincount;
+        document.getElementById("wins").innerHTML = 'Wins: ' + sessionStorage.wincount;
     } else {
         document.getElementById("wins").innerHTML = "Sorry, your browser does not support web storage...";
     }
@@ -40,12 +42,14 @@ function winCounter() {
 
 function lossCounter() {
     if(typeof(Storage) !== "undefined") {
-        if (localStorage.losscount) {
-            localStorage.losscount = Number(localStorage.losscount)+1;
+        if (sessionStorage.losscount) {
+            sessionStorage.losscount = Number(sessionStorage.losscount)+1;
+            losses = sessionStorage.losscount;
         } else {
-            localStorage.losscount = 0;
+            sessionStorage.losscount = 1;
+            losses = 0;
         }
-        document.getElementById('losses').innerHTML = 'Losses: ' + localStorage.losscount;
+        document.getElementById("losses").innerHTML = 'Losses: ' + sessionStorage.losscount;
     } else {
         document.getElementById("losses").innerHTML = "Sorry, your browser does not support web storage...";
     }
@@ -106,7 +110,7 @@ function include(arr, obj) {
 function arraysEqual(arr1, arr2) {
 
 	if (arr1.split("").toString() == arr2.join()) {
-		wins ++;
+		winCounter();
 		emoji.src = 'assets/images/grinningFace.png';
 		emojiAppend();
 		document.getElementById('status').innerHTML = 'You Win';
@@ -121,8 +125,20 @@ function arraysEqual(arr1, arr2) {
 
 	document.getElementById('word').innerHTML = blank.join(' ');
 	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
-	document.getElementById('wins').innerHTML = 'Wins: ' + localStorage.wincount;
-	document.getElementById('losses').innerHTML = 'Losses: ' + localStorage.losscount;
+
+	if (typeof(sessionStorage.wincount) == "undefined") {
+		document.getElementById('wins').innerHTML = 'Wins: ' + 0;
+	}
+	else {
+		document.getElementById("wins").innerHTML = 'Wins: ' + sessionStorage.wincount;
+	}
+	if (typeof(sessionStorage.losscount) == "undefined") {
+		document.getElementById('losses').innerHTML = 'Losses: ' + 0;
+	}
+	else {
+	 	 document.getElementById("losses").innerHTML = 'Losses: ' + sessionStorage.losscount;
+	}
+	
 
 document.onkeyup = function(event) {
 

@@ -18,7 +18,7 @@ var emoji = document.createElement('img');
 // this for loop adds an underline to each letter of the band name or places a dash if there is a space
 for (var i = 0; i < arr.length; i++) {
 	if (arr[i].indexOf(' ') >= 0) {
-		blank[i] = " ";
+		blank[i] = "\u00A0";
 	} 
 	else {
 	blank[i] = ' _ ';

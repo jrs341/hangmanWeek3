@@ -109,7 +109,8 @@ function include(arr, obj) {
 // reference: http://stackoverflow.com/questions/30820611/javascript-arrays-cannot-equal-each-other
 function arraysEqual(arr1, arr2) {
 
-	if (arr1.split("").toString() == arr2.join()) {
+	// if (arr1.split("").toString().replace(" ", "") == arr2.join().replace(" ", "")) {
+	if (arr1.replace(" ", "") == arr2.join("").replace("\u00A0", "")) {
 		winCounter();
 		emoji.src = 'assets/images/grinningFace.png';
 		emojiAppend();

@@ -11,19 +11,11 @@ var numGuessRem = arr.length + 6;
 
 var wrongGuess = 0;
 
-var wins = 0;
-
-localStorage.wins = wins;
-
-var losses = 0;
-
-localStorage.losses = losses;
-
 var continueGame = true;
 
 var emoji = document.createElement('img');
 
-// this adds an underline to each letter of the band name
+// this for loop adds an underline to each letter of the band name or places a dash if there is a space
 for (var i = 0; i < arr.length; i++) {
 	if (arr[i].indexOf(' ') >= 0) {
 		blank[i] = " - ";
@@ -31,6 +23,32 @@ for (var i = 0; i < arr.length; i++) {
 	else {
 	blank[i] = ' _ ';
 	}	
+}
+
+function winCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.wincount) {
+            localStorage.wincount = Number(localStorage.wincount)+1;
+        } else {
+            localStorage.wincount = 0;
+        }
+        document.getElementById('wins').innerHTML = 'Wins: ' + localStorage.wincount;
+    } else {
+        document.getElementById("wins").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+
+function lossCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.losscount) {
+            localStorage.losscount = Number(localStorage.losscount)+1;
+        } else {
+            localStorage.losscount = 0;
+        }
+        document.getElementById('losses').innerHTML = 'Losses: ' + localStorage.losscount;
+    } else {
+        document.getElementById("losses").innerHTML = "Sorry, your browser does not support web storage...";
+    }
 }
 
 function emojiAppend() {
@@ -42,7 +60,7 @@ function include(arr, obj) {
 		if (guessedLetters.indexOf(obj) > -1 && numGuessRem >= 1) {
 			wrongGuess++;
 			document.getElementById('status').innerHTML = 'You Guessed That Letter Already';
-		} // this is where the hangman will go
+		} 
 		else if (arr.indexOf(obj) === -1 && guessedLetters.indexOf(obj) === -1 && numGuessRem >= 1 && arr.split(" ").toString() != blank.join()) {
 			wrongGuess++;
 			document.getElementById('status').innerHTML = 'Try Again';
@@ -70,14 +88,13 @@ function include(arr, obj) {
 					emoji.src = 'assets/images/dizzyFace.png';
 					emojiAppend();
 				}
-		} else {
+		} 
+		else {
 			document.getElementById('status').innerHTML = 'Good Guess';
 		}
-
 		if (obj) {
 			guessedLetters.push(obj);
 		}
-		
 		for(var i = 0; i < arr.length; i++) {
 			if (arr.split("")[i] === obj) { 
 				blank.splice(i, 1, obj);
@@ -94,21 +111,18 @@ function arraysEqual(arr1, arr2) {
 		emojiAppend();
 		document.getElementById('status').innerHTML = 'You Win';
 		return continueGame = false;
-	} else if (wrongGuess === 6) {
+	} 
+	else if (wrongGuess === 6) {
 		document.getElementById('status').innerHTML = 'You lost, the band is ' + arr + ' would you like to play again?';
-		losses++;
+		lossCounter();
 		return continueGame = false;
 	} 
 }
 
-// function reload() {
-// 	location.relaod(false);
-// }
-
 	document.getElementById('word').innerHTML = blank.join(' ');
 	document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
-	document.getElementById('wins').innerHTML = 'Wins: ' + wins;
-	document.getElementById('losses').innerHTML = 'Losses: ' + losses;
+	document.getElementById('wins').innerHTML = 'Wins: ' + localStorage.wincount;
+	document.getElementById('losses').innerHTML = 'Losses: ' + localStorage.losscount;
 
 document.onkeyup = function(event) {
 
@@ -116,28 +130,18 @@ var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	if (event.keyCode == 13) {
 		location.reload();
 		continueGame = true;
-		wins = localStorage.wins;
-		losses = localStorage.losses;
 	}
 
 	else if (continueGame) {
 
 		 if (numGuessRem > 0) {
-
 			numGuessRem --;
-
 			include(arr, userGuess);
-
 			arraysEqual(arr, blank);
-
 		} 
-
 	}
-
 		document.getElementById('word').innerHTML = blank.join(' ');
-		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');
-		document.getElementById('wins').innerHTML = 'Wins: ' + wins;
-		document.getElementById('losses').innerHTML = 'Losses: ' + losses;
+		document.getElementById('guessedLetters').innerHTML = guessedLetters.join(' ');				
 }
 
 

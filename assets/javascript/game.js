@@ -1,7 +1,7 @@
 
 var guessedLetters = [];
 
-var hairbands = ["poison", "van halen", "aero smith", "white snake"];
+var hairbands = ["poison", "van halen", "aero smith", "white snake", "twisted sister", "ratt", "motley crue", "metallica", "quiet riot"];
 
 var arr = hairbands[Math.floor(Math.random() * hairbands.length)];
 
@@ -15,7 +15,7 @@ var continueGame = true;
 
 var emoji = document.createElement('img');
 
-// this for loop adds an underline to each letter of the band name or places a dash if there is a space
+// this for loop adds an underline to each letter of the band name or places a space if there is a space
 for (var i = 0; i < arr.length; i++) {
 	if (arr[i].indexOf(' ') >= 0) {
 		blank[i] = "\u00A0";
@@ -56,7 +56,7 @@ function lossCounter() {
 }
 
 function emojiAppend() {
-	emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 100px; width: 100px; top: 38px; left: 82px;');
+	emoji.setAttribute('style', 'position: absolute; z-index: 1; height: 80px; width: 80px; top: 25px; left: 45px;');
 	document.getElementById('images').appendChild(emoji);
 }
 function include(arr, obj) {
@@ -109,7 +109,6 @@ function include(arr, obj) {
 // reference: http://stackoverflow.com/questions/30820611/javascript-arrays-cannot-equal-each-other
 function arraysEqual(arr1, arr2) {
 
-	// if (arr1.split("").toString().replace(" ", "") == arr2.join().replace(" ", "")) {
 	if (arr1.replace(" ", "") == arr2.join("").replace("\u00A0", "")) {
 		winCounter();
 		emoji.src = 'assets/images/grinningFace.png';

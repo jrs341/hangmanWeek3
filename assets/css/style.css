@@ -31,24 +31,7 @@ p {
 	height: 50px;
 }
 
-#gallow {
-	position: absolute;
-	z-index: 0;		
-}
-
-#word {	
-}
-
 #guessedLetters {
 	height: 50px;
 }
 
-#wins {
-}
-
-#losses {
-}
-
-#images {
-	position: relative;
-}

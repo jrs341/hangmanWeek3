@@ -1,9 +1,6 @@
-# Hangman
-week 3
+Hangman
 
-Homework instructions
-
-Watch the demo.
+Instructions
 
 Choose a theme for your game! In the demo, we picked an 80s theme: 80s questions, 80s sound and an 80s aesthetic. You can choose any subject for your theme, though, so be creative!
 

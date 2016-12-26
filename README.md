@@ -1,4 +1,5 @@
 # Hangman
+week 3
 
 Homework instructions
 
